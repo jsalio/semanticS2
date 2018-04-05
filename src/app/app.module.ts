@@ -8,6 +8,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { FirebaseService } from './services/firebase.service';
+import { AppRoutingModule } from './app-routing.module';
+import { CourseModule } from './modules/course/course.module';
 
 
 @NgModule({
@@ -19,9 +22,11 @@ import { environment } from '../environments/environment';
     SharedModule,
     AngularFireModule.initializeApp(environment.FirebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AppRoutingModule,
+    CourseModule
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

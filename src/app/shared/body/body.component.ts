@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-body',
@@ -9,15 +10,22 @@ import { Observable } from 'rxjs/Observable';
 })
 export class BodyComponent implements OnInit {
   title = 'app';
-
+  course: any;
   coursesObservable: Observable<any[]>;
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private fireServ: FirebaseService) {}
 
   ngOnInit() {
-    this.coursesObservable = this.getCourses('/courses');
-  }
-  getCourses(listPath): Observable<any[]> {
-    return this.db.list(listPath).valueChanges();
+    this.fireServ.node = 'courses';
+    this.coursesObservable = this.fireServ.getElementList();
+    this.addCourse();
   }
 
+  addCourse() {
+    this.course = {
+      description: 'Semantic ui Css framework',
+      title: 'Semantic',
+      url: 'https://semantic-ui.com/'
+    };
+    this.fireServ.pushOnRef('Semantic U3', this.course);
+  }
 }

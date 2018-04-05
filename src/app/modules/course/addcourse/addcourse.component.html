@@ -1,0 +1,17 @@
+<div class="ui container">
+  <form class="ui form" [formGroup]="courseForm" (ngSubmit)="postCourse()">
+    <div class="field">
+      <label>Couser name</label>
+      <input formControlName="title" placeholder="Couser name" type="text">
+    </div>
+    <div class="field">
+      <label>Course Description</label>
+      <textarea formControlName="description" placeholder="example: this course for bla bla bla" rows="2"></textarea>
+    </div>
+    <div class="field">
+      <label>Course Url</label>
+      <input formControlName="url" placeholder="example : www.contoso.com" type="text">
+    </div>
+    <button class="ui button" type="submit">Submit</button>
+  </form>
+</div>
