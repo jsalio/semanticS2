@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { Promise } from 'q';
 
 @Injectable()
 export class FirebaseService {
@@ -24,5 +26,9 @@ export class FirebaseService {
 
   getElementList(): Observable<any[]> {
     return this.db.list(`/${this.node}`).valueChanges();
+  }
+
+  getOnceElement(key: string): Observable<any> {
+    return this.db.object(`/${this.node}/${key}`).valueChanges();
   }
 }

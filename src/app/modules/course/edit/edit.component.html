@@ -1,3 +1,29 @@
-<p>
-  edit works!
-</p>
+<div class="ui container " *ngIf="showloading">
+  <p></p>
+  <div class="ui active dimmer">
+      <div class="ui indeterminate text loader">Preparando Datos</div>
+  </div>
+</div>
+
+<div class="ui container" *ngIf="!showloading">
+  Data cargada
+  <p></p>
+  {{ coursesObservable | json }}
+  <!-- <form class="ui form" [formGroup]="courseForm" (ngSubmit)="postCourse()">
+    <div class="field">
+      <label>Couser name</label>
+      <input formControlName="title" placeholder="Couser name" type="text">
+    </div>
+    <div class="field">
+      <label>Course Description</label>
+      <textarea formControlName="description" placeholder="example: this course for bla bla bla" rows="2"></textarea>
+    </div>
+    <div class="field">
+      <label>Course Url</label>
+      <input formControlName="url" placeholder="example : www.contoso.com" type="text">
+    </div>
+    <button class="ui button" type="submit">Submit</button>
+  </form> -->
+</div>
+
+
