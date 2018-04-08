@@ -31,4 +31,16 @@ export class FirebaseService {
   getOnceElement(key: string): Observable<any> {
     return this.db.object(`/${this.node}/${key}`).valueChanges();
   }
+
+  updateOnceElement(key: string, data: any): void {
+    const toPut = this.db.database.ref(`/${this.node}/${key}`);
+    console.log(`/${this.node}/${key} => ${JSON.stringify(data)}`);
+    toPut.update(data)
+    .then(() => {
+      console.log('DATA UPDATED');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 }

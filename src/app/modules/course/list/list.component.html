@@ -22,7 +22,7 @@
               <td>{{course.description}}</td>
               <td><a href="{{course.url}}" target="_blank" class="btn btn-danger">Go To Course</a></td>
               <td>
-                <a [routerLink]="['/course/edit',course.title]">Edit</a>
+                <a [routerLink]="['/course/edit',getCourseUrl(course.title)]">Edit</a>
               </td>
           </tr>
         </tbody>

@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { FirebaseService } from './services/firebase.service';
 import { AppRoutingModule } from './app-routing.module';
 import { CourseModule } from './modules/course/course.module';
+import { StudentModule } from './modules/student/student.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CourseModule } from './modules/course/course.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AppRoutingModule,
-    CourseModule
+    CourseModule,
+    StudentModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

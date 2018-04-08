@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-list',
@@ -10,26 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  course: any;
-  coursesObservable: Observable<any[]>;
 
+  studentsObservable: Observable<any[]>;
   constructor(
     private db: AngularFireDatabase,
     private fireServ: FirebaseService,
-    private router: Router
-  ) { }
+    private router: Router) { }
 
   ngOnInit() {
-    this.fireServ.node = 'courses';
-    this.coursesObservable = this.fireServ.getElementList();
-  }
-
-  addNewCourse() {
-    this.router.navigate(['course/addnew']);
-  }
-
-  getCourseUrl(urlCourse: string): string {
-    return urlCourse.replace(/ /g, '_');
+    this.fireServ.node = 'student';
+    this.studentsObservable = this.fireServ.getElementList();
   }
 
 }

@@ -37,7 +37,7 @@ export class AddcourseComponent implements OnInit {
 
  postCourse() {
   this.course.details = this.courseForm.getRawValue();
-  this.course.id = this.course.details.title;
+  this.course.id = this.course.details.title.replace(/ /g, '_');
   this.frireServ.pushOnRef(this.course.id, this.course.details);
   this.router.navigate(['course/list']);
  }
