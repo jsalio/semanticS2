@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
+import { DataTableResource } from 'angular5-data-table';
 
 @Component({
   selector: 'app-list',
