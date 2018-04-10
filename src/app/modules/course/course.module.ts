@@ -7,7 +7,7 @@ import { MainComponent } from './main/main.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
-import { DataTableModule } from 'angular5-data-table';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { DataTableModule } from 'angular5-data-table';
     CourseRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTableModule
+    TableModule
   ],
   declarations: [ListComponent, MainComponent, AddcourseComponent, EditComponent],
   exports: [ ListComponent, MainComponent]

@@ -12,17 +12,26 @@ import { DataTableResource } from 'angular5-data-table';
 })
 export class ListComponent implements OnInit {
   course: any;
-  coursesObservable: Observable<any[]>;
+  courses: any[];
+  cols: any[];
 
   constructor(
     private db: AngularFireDatabase,
     private fireServ: FirebaseService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
+    this.cols = [
+      { header: 'title', field: 'title' },
+      { header: 'description', field: 'description' },
+      { header: 'Web reference', field: 'url' },
+      { header: 'action', field: '' }
+    ];
     this.fireServ.node = 'courses';
-    this.coursesObservable = this.fireServ.getElementList();
+    this.fireServ.getElementList().subscribe(data => {
+      this.courses = data;
+    });
   }
 
   addNewCourse() {
@@ -32,5 +41,4 @@ export class ListComponent implements OnInit {
   getCourseUrl(urlCourse: string): string {
     return urlCourse.replace(/ /g, '_');
   }
-
 }
