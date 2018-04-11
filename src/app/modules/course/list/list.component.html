@@ -29,7 +29,7 @@
   </table>
 </div> -->
 
-<p-table [value]="courses" [paginator]="true" [rows]="10" [responsive]="true" styleClass="ui celled table">
+<p-table [value]="courses" [paginator]="true" [rows]="10" [responsive]="true" styleClass="ui celled table" [loading]="loading">
   <ng-template pTemplate="caption">
     List of Couses
   </ng-template>
@@ -49,9 +49,16 @@
         <a href="{{course.url}}">References</a>
       </td>
       <td>
-          <a [routerLink]="['/course/edit',getCourseUrl(course.title)]" ui primary button>Edit</a>
+        <a [routerLink]="['/course/edit',getCourseUrl(course.title)]" ui primary button>Edit</a>
       </td>
     </tr>
   </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+    <div style="text-align:left">
+      <button type="button" pButton icon="fa-plus" class="ui primary button" (click)="addNewCourse()" label="New">New</button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    No data for display
+</ng-template>
 </p-table>
-<button class="ui primary button" (click)="addNewCourse()">New</button>

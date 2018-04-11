@@ -13,12 +13,15 @@ export class ListComponent implements OnInit {
   course: any;
   courses: any[];
   cols: any[];
+  loading: boolean;
 
   constructor(
     private db: AngularFireDatabase,
     private fireServ: FirebaseService,
     private router: Router
-  ) {}
+  ) {
+    this.loading = true;
+  }
 
   ngOnInit() {
     this.cols = [
@@ -30,6 +33,7 @@ export class ListComponent implements OnInit {
     this.fireServ.node = 'courses';
     this.fireServ.getElementList().subscribe(data => {
       this.courses = data;
+      this.loading = false;
     });
   }
 

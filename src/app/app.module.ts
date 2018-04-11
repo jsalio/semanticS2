@@ -14,9 +14,10 @@ import { CourseModule } from './modules/course/course.module';
 import { StudentModule } from './modules/student/student.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,7 @@ import { StudentModule } from './modules/student/student.module';
     AngularFireAuthModule,
     AppRoutingModule,
     CourseModule,
-    StudentModule
+    StudentModule,
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

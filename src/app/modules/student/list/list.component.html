@@ -1,6 +1,33 @@
-<p>
-  list works!
-</p>
-<div *ngFor="let student of studentsObservable | async">
-  {{student.nombre}}
-</div>
+<!-- <div *ngFor="let student of studentsObservable | async">
+  {{student.name}}
+</div> -->
+<p-table [value]="studentsObservable" [paginator]="true" [rows]="10" [responsive]="true" styleClass="ui celled table" [loading]="loading">
+  <ng-template pTemplate="caption">
+    List of Couses
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+        {{col.header}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-student>
+    <tr>
+      <td>{{student.name}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.course}}</td>
+      <td><a [routerLink]="['edit',getStudentUrl(student)]" class="ui default button"><i class="edit icon"></i>Edit</a></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+    <div style="text-align:left">
+      <button type="button" pButton icon="fa-plus" class="ui primary button" (click)="addNewStudent()" label="New">New</button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    No data for display
+</ng-template>
+</p-table>

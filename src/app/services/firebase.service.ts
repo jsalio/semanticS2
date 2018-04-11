@@ -24,9 +24,10 @@ export class FirebaseService {
     .catch(() => console.log('Error save data'));
   }
 
-  getElementList(): Observable<any[]> {
-    return this.db.list(`/${this.node}`).valueChanges();
+  getElementList(nodeString?: string): Observable<any[]> {
+    return nodeString === undefined ? this.db.list(`/${this.node}`).valueChanges() : this.db.list(`/${nodeString}`).valueChanges();
   }
+
 
   getOnceElement(key: string): Observable<any> {
     return this.db.object(`/${this.node}/${key}`).valueChanges();

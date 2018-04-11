@@ -1,0 +1,29 @@
+<form class="ui form" [formGroup]="studentForm" (ngSubmit)="putStudentData()">
+  <h4 class="ui dividing header">Student Information</h4>
+  <div class="ui form">
+    <label>Name</label>
+    <div class="two fields">
+      <div class="field">
+        <input formControlName="name" placeholder="First Name" type="text">
+      </div>
+      <div class="field">
+        <input formControlName="lastName" placeholder="Last Name" type="text">
+      </div>
+    </div>
+    <div class="field">
+        <div class="two fields">
+          <div class="field">
+              <label>Course</label>
+              <sui-select placeholder="Choose" class="selection" formControlName="course">
+                <sui-select-option class="item"  *ngFor="let course of courseList" [value]="course.title"></sui-select-option>
+              </sui-select>
+          </div>
+          <div class="field">
+              <label>Age</label>
+              <input formControlName="age" placeholder="Age" type="text">
+          </div>
+        </div>
+    </div>
+  </div>
+  <button class="ui button" tabindex="0" type="submit">Submit</button>
+</form>
