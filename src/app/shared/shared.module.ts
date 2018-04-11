@@ -5,9 +5,11 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { BodyComponent } from './body/body.component';
 import { SuiModule } from 'ng2-semantic-ui';
+import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     SuiModule
   ],
   declarations: [MenuComponent, FooterComponent, NavComponent, BodyComponent],
