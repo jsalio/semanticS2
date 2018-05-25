@@ -12,12 +12,12 @@ import { FirebaseService } from './services/firebase.service';
 import { AppRoutingModule } from './app-routing.module';
 import { CourseModule } from './modules/course/course.module';
 import { StudentModule } from './modules/student/student.module';
-
-
+import { ActivityModule } from './modules/activity/activity.module';
+import { RegisterModule } from './modules/register/register.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +28,8 @@ import { StudentModule } from './modules/student/student.module';
     AppRoutingModule,
     CourseModule,
     StudentModule,
+    ActivityModule,
+    RegisterModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

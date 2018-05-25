@@ -1,0 +1,22 @@
+<div *ngIf="searchComplete">
+  <div class="ui container">
+    <form class="ui form" [formGroup]="activityForm">
+      <div class="field">
+        <label>Activity name</label>
+        <input formControlName="name" placeholder="Name" type="text">
+      </div>
+      <div class="field">
+        <label>Price of activity</label>
+        <input formControlName="price" placeholder="Value on RD$" type="text">
+      </div>
+      <div class="field">
+        <sui-checkbox formControlName="recurrent" tabindex="0">
+          Is Recurrent ?
+        </sui-checkbox>
+      </div>
+      <button class="ui button" type="submit">Submit</button>
+      <button class="ui button" type="button" (click)="goToList()">Back</button>
+    </form>
+  </div>
+  {{currentActivity | json}}
+</div>

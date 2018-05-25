@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireAction } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { Promise } from 'q';
 
 @Injectable()
 export class FirebaseService {
@@ -38,10 +37,13 @@ export class FirebaseService {
     console.log(`/${this.node}/${key} => ${JSON.stringify(data)}`);
     toPut.update(data)
     .then(() => {
-      console.log('DATA UPDATED');
     })
     .catch((err) => {
       console.log(err);
     });
+  }
+
+  searchValue(value: string) {
+    return this.db.database.ref(`/${this.node}/` + value).once('value');
   }
 }
